@@ -6,6 +6,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # Add any button you want below your welcome image
 markup = InlineKeyboardMarkup([[InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url="https://t.me/JHBots")]])
 
+# Your bot credentials and access tokens
+api_id = 16743442  # Replace with your API ID
+api_hash = "12bbd720f4097ba7713c5e40a11dfd2a"  # Replace with your API hash
+bot_token = "6206599982:AAGqsDDURBhd4d9677sKxCYNCRU5TeqieMc"  # Replace with your bot token
+
+# Create the Client object
+app = Client("welcome_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+
 @app.on_message(filters.new_chat_members & filters.group)
 async def welcome(_, message):
     for user in message.new_chat_members:
@@ -69,3 +77,6 @@ Mʏ Sʜᴀʀɪɴɢᴀɴ Aʟᴡᴀʏs Wᴀᴛᴄʜɪɴɢ Yᴏᴜ!
         except Exception as e:
             print(f"Error sending welcome message for {user.first_name}: {str(e)}")
 
+# Run the client
+app.run()
+idle()
